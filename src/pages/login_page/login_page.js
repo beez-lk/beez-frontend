@@ -32,12 +32,12 @@ export default function LoginPage() {
           >
             <div className={classes.button_bar}>
               <Button1
-                title="Login"
+                title="Sign In"
                 isSelected={state.isLogin}
                 onClick={() => toggleLogin(true)}
               />
               <Button1
-                title="Contact Us"
+                title="Sign Up"
                 isSelected={!state.isLogin}
                 onClick={() => toggleLogin(false)}
               />
