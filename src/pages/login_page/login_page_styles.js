@@ -5,7 +5,7 @@ const useStyles = makeStyles({
   root: {
     height: "100vh",
     width: "100%",
-    backgroundImage: "url(/images/login_background.jpg)",
+    backgroundImage: "url(/images/bc.jpeg)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     alignItems: "center",
@@ -13,6 +13,8 @@ const useStyles = makeStyles({
   },
   login_card: {
     width: "90%",
+    border: 10,
+    borderColor: "white",
     marginLeft: "5%",
     height: "90vh",
     top: "5%",
@@ -22,7 +24,8 @@ const useStyles = makeStyles({
     borderRadius: "20px",
   },
   left_card: {
-    backgroundImage: "url(/images/login_side.jpg)",
+    backgroundColor: "black",
+    // backgroundImage: "url(/images/black.png)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     width: "100%",

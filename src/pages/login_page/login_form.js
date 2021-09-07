@@ -48,7 +48,7 @@ export default function LoginForm() {
 
   return (
     <div className={classes.login_form_outer}>
-      <Box height={50} />
+      <Box height={30} />
       <FormControl fullWidth>
         <TextField
           className={classes.text_field}
@@ -61,7 +61,7 @@ export default function LoginForm() {
             changeState("userName", event.target.value.toLowerCase());
           }}
         />
-        <Box height={50} />
+        <Box height={40} />
         <TextField
           className={classes.text_field}
           type="password"
@@ -73,7 +73,7 @@ export default function LoginForm() {
             changeState("password", event.target.value);
           }}
         />
-        <Box height={50} />
+        <Box height={40} />
         <div className={classes.login_btn_outer}>
           <Button1
             loading={state.loading}
