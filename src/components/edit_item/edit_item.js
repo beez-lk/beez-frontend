@@ -4,7 +4,7 @@ import useStyles from "./edit_item_styles";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import Button1 from "../button_1/button_1";
 import ImagePicker from "../image_picker/image_picker";
-import { createItemCall, updateItemCall } from "../../api_service/api_service";
+// import { createItemCall, updateItemCall } from "../../api_service/api_service";
 
 export default function EditItem() {
   const classes = useStyles();
@@ -91,18 +91,18 @@ export default function EditItem() {
     }
     formData.append("discount", state.discount);
     if (itemToEdit) {
-      updateItemCall(formData, itemToEdit.id).then((response) => {
-        if (response.success) {
-          onClose();
-        }
-      });
+      // updateItemCall(formData, itemToEdit.id).then((response) => {
+      //   if (response.success) {
+      //     onClose();
+      //   }
+      // });
     } else {
       formData.append("item_category_id", selectedItemCategory.id);
-      createItemCall(formData).then((response) => {
-        if (response.success) {
-          onClose();
-        }
-      });
+      // createItemCall(formData).then((response) => {
+      //   if (response.success) {
+      //     onClose();
+      //   }
+      // });
     }
   };
   return (

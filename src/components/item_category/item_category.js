@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useStoreActions } from "easy-peasy";
 import React, { useState } from "react";
-import { image_base_url } from "../../config/config";
 import FadeInAnimatedDiv from "../animated_div/fade_in_animated_div";
 import useStyles from "./item_category_styles";
 
@@ -21,7 +20,7 @@ export default function ItemCategory({ category, isSelected }) {
       <div
         className={classes.item_category}
         style={{
-          backgroundImage: `url(${image_base_url}/${category.image})`,
+          backgroundImage: `url(${category.image})`,
         }}
       >
         {(isHover || isSelected) && (

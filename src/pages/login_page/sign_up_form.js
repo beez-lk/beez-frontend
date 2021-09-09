@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import Button1 from "../../components/button_1/button_1";
 import useStyles from "./login_page_styles";
 import TermsAndConditions from "../../components/terms_and_conditions/terms_and_conditions";
+import { signUpCall } from "../../api_service/api_service";
 var emailValidator = require("email-validator");
 
 export default function SignUpForm() {
   const classes = useStyles();
   const [state, setState] = useState({
     email: "",
-    restaurant: "",
-    message: "",
+    name: "",
     loading: false,
   });
 
@@ -21,19 +21,28 @@ export default function SignUpForm() {
     });
   };
 
-  const contactAction = () => {
+  const signUp = () => {
     if (!state.email || !emailValidator.validate(state.email)) {
       return global.showAlert(
         "Please Be Careful!",
-        "Enter your valid email address. Your email address is important to verify the account."
+        "Enter your valid Email Address. Your Email Address is important to verify the account."
       );
     }
-    if (!state.restaurant) {
+    if (!state.name) {
       return global.showAlert(
         "Please Be Careful!",
-        "Enter your full name currectly. Your full name is important to us!"
+        "Enter your Full Name correctly. Your Name is important to us!"
       );
     }
+    changeState("loading", true);
+    signUpCall(state.email, state.name).then((response) => {
+      changeState("loading", false);
+      if (response.success) {
+        global.showAlert("Welcome to Beeez", response.message);
+      } else {
+        global.showAlert("", response.message);
+      }
+    });
   };
 
   return (
@@ -43,7 +52,7 @@ export default function SignUpForm() {
         <TextField
           className={classes.text_field}
           type="email"
-          label="Please enter your email address"
+          label="Please enter your Email Address"
           placeholder="johndoe@example.com"
           InputLabelProps={{ shrink: true }}
           value={state.email}
@@ -55,19 +64,19 @@ export default function SignUpForm() {
         <TextField
           className={classes.text_field}
           type="text"
-          label="Please enter your full name "
+          label="Please enter your Full Name "
           placeholder="Your full name "
           InputLabelProps={{ shrink: true }}
-          value={state.restaurant}
+          value={state.name}
           onChange={(event) => {
-            changeState("restaurant", event.target.value);
+            changeState("name", event.target.value);
           }}
         />
         <Box height={35} />
         <div className={classes.login_btn_outer}>
           <Button1
             loading={state.loading}
-            onClick={contactAction}
+            onClick={signUp}
             title={"Submit"}
             isSelected
             width={150}

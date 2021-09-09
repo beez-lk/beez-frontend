@@ -5,7 +5,7 @@ const useStyles = makeStyles({
   root: {
     height: "100vh",
     width: "100%",
-    backgroundImage: "url(/images/bc.jpeg)",
+    backgroundImage: "url(/images/landing_background.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     alignItems: "center",
@@ -24,8 +24,7 @@ const useStyles = makeStyles({
     borderRadius: "20px",
   },
   left_card: {
-    backgroundColor: "black",
-    // backgroundImage: "url(/images/black.png)",
+    backgroundImage: "url(images/login_side.jpg)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     width: "100%",

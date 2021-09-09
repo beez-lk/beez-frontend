@@ -3,7 +3,6 @@ import { Delete, Edit, RestoreFromTrash } from "@material-ui/icons";
 import { useStoreActions } from "easy-peasy";
 import React, { useState } from "react";
 import { updateItemCall } from "../../api_service/api_service";
-import { image_base_url } from "../../config/config";
 import { calculateItemPrice } from "../../utils/calculations";
 import FadeInAnimatedDiv from "../animated_div/fade_in_animated_div";
 import PulseAnimationDiv from "../animated_div/pulse_animated_div";
@@ -25,7 +24,7 @@ export default function Item({ item, adminView, index }) {
           elevation={10}
           className={classes.item_outer}
           style={{
-            backgroundImage: `url(${image_base_url}/${item.image})`,
+            backgroundImage: `url(${item.image})`,
           }}
         >
           <PriceTag itemPrice={itemPrice} showOriginal={false} />

@@ -4,10 +4,10 @@ import useStyles from "./edit_category_styles";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import Button1 from "../button_1/button_1";
 import ImagePicker from "../image_picker/image_picker";
-import {
-  createItemCategoryCall,
-  updateItemCategoryCall,
-} from "../../api_service/api_service";
+// import {
+//   createItemCategoryCall,
+//   updateItemCategoryCall,
+// } from "../../api_service/api_service";
 
 export default function EditCategory() {
   const classes = useStyles();
@@ -72,19 +72,19 @@ export default function EditCategory() {
       formData.append("description", state.description);
     }
     if (categoryToEdit) {
-      updateItemCategoryCall(formData, categoryToEdit.id).then((response) => {
-        if (response.success) {
-          // global.showAlert('', response.message)
-          onClose();
-        }
-      });
+      // updateItemCategoryCall(formData, categoryToEdit.id).then((response) => {
+      //   if (response.success) {
+      //     // global.showAlert('', response.message)
+      //     onClose();
+      //   }
+      // });
     } else {
-      createItemCategoryCall(formData).then((response) => {
-        if (response.success) {
-          // global.showAlert('', response.message)
-          onClose();
-        }
-      });
+      // createItemCategoryCall(formData).then((response) => {
+      //   if (response.success) {
+      //     // global.showAlert('', response.message)
+      //     onClose();
+      //   }
+      // });
     }
   };
   return (

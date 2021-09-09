@@ -2,7 +2,6 @@ import { Button, IconButton } from "@material-ui/core";
 import { Add, Edit } from "@material-ui/icons";
 import { uniqueId } from "lodash";
 import React, { useEffect, useState } from "react";
-import { image_base_url } from "../../config/config";
 import useStyles from "./image_picker_styles";
 
 export default function ImagePicker({ imageUrl, setFile, file }) {
@@ -43,7 +42,7 @@ export default function ImagePicker({ imageUrl, setFile, file }) {
             backgroundImage: updatedImageUrl
               ? `url(${updatedImageUrl})`
               : imageUrl
-              ? `url(${image_base_url}/${imageUrl})`
+              ? `url(${imageUrl})`
               : "none",
           }}
         >

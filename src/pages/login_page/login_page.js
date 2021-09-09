@@ -6,8 +6,8 @@ import FadeInUpAnimationDiv from "../../components/animated_div/fade_in_up_anima
 import FadeInAnimatedDiv from "../../components/animated_div/fade_in_animated_div";
 import useWindowSize from "../../utils/use_window_size";
 import LoginForm from "./login_form";
-import ContactUsForm from "./contact_us_form";
 import clsx from "clsx";
+import SignUpForm from "./sign_up_form";
 
 export default function LoginPage() {
   const classes = useStyles();
@@ -55,7 +55,7 @@ export default function LoginPage() {
                 <div className={classes.contact_scroll_outer}>
                   <div className={classes.welcome_text}>Welcome</div>
                   <div>Please send us little bit about you!</div>
-                  <ContactUsForm />
+                  <SignUpForm />
                 </div>
               </FadeInUpAnimationDiv>
             )}

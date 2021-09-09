@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import Button1 from "../../components/button_1/button_1";
 import useStyles from "./login_page_styles";
 import TermsAndConditions from "../../components/terms_and_conditions/terms_and_conditions";
-import { useHistory } from "react-router-dom";
 import { loginCall } from "../../api_service/api_service";
+import UseMyHistory from "../../utils/use_history";
 
 export default function LoginForm() {
   const classes = useStyles();
-  const history = useHistory();
+  const { replace } = UseMyHistory();
   const [state, setState] = useState({
-    userName: "sahanperera1997",
-    password: "Test123#",
+    email: "",
+    password: "",
     loading: false,
   });
 
@@ -23,10 +23,10 @@ export default function LoginForm() {
   };
 
   const loginAction = () => {
-    if (!state.userName) {
+    if (!state.email) {
       return global.showAlert(
         "Please Be Careful!",
-        "'User Name' is required to login."
+        "'Email Address' is required to login."
       );
     }
     if (!state.password) {
@@ -36,12 +36,12 @@ export default function LoginForm() {
       );
     }
     changeState("loading", true);
-    loginCall(state.userName, state.password).then((response) => {
+    loginCall(state.email, state.password).then((response) => {
       changeState("loading", false);
       if (response.success) {
-        history.replace("/home");
+        replace("/home");
       } else {
-        return global.showAlert("", response.message);
+        global.showAlert("", response.message)
       }
     });
   };
@@ -53,12 +53,12 @@ export default function LoginForm() {
         <TextField
           className={classes.text_field}
           type="text"
-          label="Please enter your User Name"
-          placeholder="john_doe"
+          label="Please enter your Email Address"
+          placeholder="johndoe@example.com"
           InputLabelProps={{ shrink: true }}
-          value={state.userName}
+          value={state.email}
           onChange={(event) => {
-            changeState("userName", event.target.value.toLowerCase());
+            changeState("email", event.target.value.toLowerCase());
           }}
         />
         <Box height={40} />
