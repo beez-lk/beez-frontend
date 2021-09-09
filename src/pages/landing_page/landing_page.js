@@ -12,6 +12,20 @@ export default function LandingPage() {
         <AppBar />
         <Heading />
       </div>
+      <div className={classes.scroll_outer}>
+        <div className={classes.scroll_card}>
+          <div style={{ height: "500px", position: "relative" }}>
+            <div
+              id="about_us_section"
+              style={{ position: "absolute", top: "-100px" }}
+            />
+            <h1>About Us</h1>
+          </div>
+          <div id="contact_us_section" style={{ height: "500px" }}>
+            <h1>Contact Us</h1>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -26,12 +40,20 @@ const AppBar = () => {
       </div>
       <div>
         <Button1
-          onClick={() => push("/about_us")}
+          onClick={() => {
+            document.getElementById("about_us_section").scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
           isSelected
           title="About Us"
         />
         <Button1
-          onClick={() => push("/contact_us")}
+          onClick={() => {
+            document.getElementById("contact_us_section").scrollIntoView({
+              behavior: "smooth",
+            });
+          }}
           isSelected
           title="Contact Us"
         />
