@@ -1,74 +1,56 @@
 import { makeStyles } from "@material-ui/core";
-import { primary_color_1, primary_color_2, primary_gradient, primary_gradient_reverse, text_color_dark, text_color_light } from "../../themes/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    height:'90px',
-    backgroundColor: "white",
-    borderRadius: "10px",
-    padding: "2%",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+    flexGrow: 1,
   },
-  restaurant_name_card: {
-    width: "200px",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundImage: primary_gradient,
-    borderRadius: "10px",
-    padding: "8px",
-    color: "white",
+  menuButton: {
+    marginRight: theme.spacing(2),
   },
-  setting_button: {
-    height: "50px",
-    width: "50px",
-    marginLeft: "20px",
+  title: {
+    flexGrow: 1,
   },
-  setting_icon: {
-    fontSize: "30px",
-    color: "#bfbfbf",
-    transition: "0.5s",
-    "&:hover": {
-      color: primary_color_2,
+  btnset: {
+    "& > *": {
+      margin: theme.spacing(1),
     },
   },
-  main_text: {
-    fontSize: "25px",
-    fontWeight: "bold",
-    color: text_color_dark,
+  btnStyle2: {
+    color: "white",
+    fontSize:'10px',
+    padding:'0px'
   },
-  sub_text: {
-    fontSize: "12px",
-    color: text_color_dark,
+  btnstyle: {
+    color: "white",
   },
-  backdrop: {
-    zIndex: 2,
-    color: '#fff',
+  appBar: {
+    backgroundColor: "#101820",
+    borderColor: "#05070a",
+    position: "fixed",
+    width: "100%",
+    overflow: "fixed",
   },
-  message_card: {
-    width: "400px",
-    borderRadius: "10px",
-    border: `2px solid ${primary_color_1}`,
+  searchIcon: {
+    color: "orange",
   },
-  message_head: {
-    padding: "10px",
-    backgroundImage: primary_gradient_reverse,
-    color: text_color_light,
-    fontWeight: "bold",
-    fontFamily: "sans-serif",
+  inputRoot: {
+    color: "inherit",
   },
-  message_body: {
-    padding: "10px",
-    fontFamily: "system-ui",
-    minHeight: "50px",
-    color: "#6f6f6f",
+  datafactzlogo: {
+    cursor: "pointer",
   },
-  message_buttons: {
-    textAlign: "right",
+  menuItem: {
+    padding:'10px 15px',
+    backgroundColor: "#101820",
+    color: "white",
+    "&:hover,&:active": {
+      backgroundColor: "#101820",
+      color: "#be5e13",
+    },
   },
-});
+  dropList:{
+    padding:'0px'
+  }
+}));
 
 export default useStyles;
