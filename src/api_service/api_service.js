@@ -23,12 +23,12 @@ const handleApiCall = async (method, url, body) => {
           "Sorry, There are some validation errors!",
           error.response.data.data[0].message
         );
-        throw error
-      } 
+        throw error;
+      }
       return error.response.data;
     }
     global.showAlert("Something went wrong", "Please try again!");
-    throw error
+    throw error;
   }
 };
 
@@ -48,5 +48,24 @@ export const signUpCall = async (email, name) => {
     email: email,
     name: name,
   });
+  return response;
+};
+
+export const verificationCall = async (verificationCode) => {
+  const response = await handleApiCall("POST", "/auth/verify_email", {
+    verification_code: verificationCode,
+  });
+  return response;
+};
+
+
+export const setPasswordCall = async (verificationCode,password) => {
+  const response = await handleApiCall("POST", "/auth/set_password", {
+    verification_code: verificationCode,
+    password:password
+  });
+  if(response.success){
+    localStorage.setItem("beeez_access_token", response.data.access_token);
+  }
   return response;
 };

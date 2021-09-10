@@ -1,16 +1,17 @@
 import { Box, FormControl, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import Button1 from "../../components/button_1/button_1";
-import useStyles from "./login_page_styles";
+import useStyles from "./set_password_styles";
 import TermsAndConditions from "../../components/terms_and_conditions/terms_and_conditions";
-import { signUpCall } from "../../api_service/api_service";
-var emailValidator = require("email-validator");
+import { setPasswordCall } from "../../api_service/api_service";
+import UseMyHistory from "../../utils/use_history";
 
-export default function SignUpForm() {
+export default function SetPasswordForm({ verificationCode }) {
   const classes = useStyles();
+  const { replace } = UseMyHistory();
   const [state, setState] = useState({
-    email: "",
-    name: "",
+    password: "",
+    confirmPassword: "",
     loading: false,
   });
 
@@ -21,25 +22,30 @@ export default function SignUpForm() {
     });
   };
 
-  const signUp = () => {
-    if (!state.name) {
+  const setPasswordAction = () => {
+    if (!state.password) {
       return global.showAlert(
         "Please Be Careful!",
-        "Enter your Full Name correctly. Your Name is important to us!"
+        "'Password' is required to login."
       );
     }
-    if (!state.email || !emailValidator.validate(state.email)) {
+    if (!state.confirmPassword) {
       return global.showAlert(
         "Please Be Careful!",
-        "Enter your valid Email Address. Your Email Address is important to verify the account."
+        "Please enter your password again to confirm"
       );
     }
-
+    if (state.password !== state.confirmPassword) {
+      return global.showAlert(
+        "Please Be Careful!",
+        "Your password and confirm password not matched!"
+      );
+    }
     changeState("loading", true);
-    signUpCall(state.email, state.name).then((response) => {
+    setPasswordCall(verificationCode, state.password).then((response) => {
       changeState("loading", false);
       if (response.success) {
-        global.showAlert("Welcome to Beeez", response.message);
+        replace("/home");
       } else {
         global.showAlert("", response.message);
       }
@@ -48,37 +54,37 @@ export default function SignUpForm() {
 
   return (
     <div className={classes.login_form_outer}>
-      <Box height={20} />
+      <Box height={30} />
       <FormControl fullWidth>
         <TextField
           className={classes.text_field}
-          type="text"
-          label="Please enter your Full Name "
-          placeholder="Your full name "
+          type="password"
+          label="Please enter your Password"
+          placeholder="******"
           InputLabelProps={{ shrink: true }}
-          value={state.name}
+          value={state.password}
           onChange={(event) => {
-            changeState("name", event.target.value);
+            changeState("password", event.target.value);
           }}
         />
-        <Box height={35} />
+        <Box height={40} />
         <TextField
           className={classes.text_field}
-          type="email"
-          label="Please enter your Email Address"
-          placeholder="johndoe@example.com"
+          type="password"
+          label="Please confirm your Password"
+          placeholder="******"
           InputLabelProps={{ shrink: true }}
-          value={state.email}
+          value={state.confirmPassword}
           onChange={(event) => {
-            changeState("email", event.target.value);
+            changeState("confirmPassword", event.target.value);
           }}
         />
-        <Box height={35} />
+        <Box height={40} />
         <div className={classes.login_btn_outer}>
           <Button1
             loading={state.loading}
-            onClick={signUp}
-            title={"Submit"}
+            onClick={setPasswordAction}
+            title={"ok"}
             isSelected
             width={150}
           />
