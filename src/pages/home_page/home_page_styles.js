@@ -1,47 +1,38 @@
 import { makeStyles } from "@material-ui/core";
-import { background_color_2 } from "../../themes/colors";
+import { primary_color_1, primary_color_2 } from "../../themes/colors";
 
 const useStyles = makeStyles({
   root: {
     height: "100vh",
     width: "100%",
-    backgroundColor: background_color_2,
+    backgroundImage: "url(images/background_1.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    padding: "30px",
+  },
+  app_bar: {
+    backgroundColor: "#ffffff21",
+    borderRadius: "20px",
+    padding: "10px 10px",
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  left_bar: {
-    backgroundColor: "white",
-    height: "100%",
-    width: "100px",
-    boxShadow: "-2px -8px 8px 0px #88888896",
-  },
-  logo_outer: {
-    height: "80px",
-    width: "80px",
-    margin: "auto",
-    marginTop: "10px",
-  },
-  right_bar: {
-    height: "100%",
-    width: "100%",
-    padding: "20px",
-    display: "flex",
-    flexDirection: "column",
-  },
-  main_row: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "row",
-    flexGrow: 1,
-    paddingTop: "20px",
-  },
-  main_left_container: {
-    height: "100%",
-    width: "65%",
-  },
-  main_right_container: {
-    height: "100%",
-    width: "35%",
+  logo_text: {
+    color: primary_color_2,
+    fontSize: "25px",
+    fontWeight: "bold",
+    marginLeft: "20px",
+    cursor: "pointer",
+    padding: "2px 15px",
+    borderRadius: "10px",
+    transition: "0.5s",
+    "&:hover": {
+      backgroundColor: primary_color_1,
+      color: "white",
+    },
   },
 });
 

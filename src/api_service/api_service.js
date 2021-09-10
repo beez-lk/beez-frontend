@@ -58,14 +58,18 @@ export const verificationCall = async (verificationCode) => {
   return response;
 };
 
-
-export const setPasswordCall = async (verificationCode,password) => {
+export const setPasswordCall = async (verificationCode, password) => {
   const response = await handleApiCall("POST", "/auth/set_password", {
     verification_code: verificationCode,
-    password:password
+    password: password,
   });
-  if(response.success){
+  if (response.success) {
     localStorage.setItem("beeez_access_token", response.data.access_token);
   }
+  return response;
+};
+
+export const getAuthUserCall = async () => {
+  const response = await handleApiCall("GET", "/api/users/me", null);
   return response;
 };
